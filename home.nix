@@ -86,34 +86,19 @@
     ])
     
     (with pkgs-unstable;[
-     neovim
     ])
    ];
    file = {};
    sessionVariables = {};
   };
 
-  programs.neovim = {
-   extraLuaConfig = ''
-    local opt = vim.opt
-    opt.clipboard = 'unnamedplus'
-    opt.showmode = true
-    opt.showtabline = 0
-    opt.swapfile = false
-    opt.undofile = true
-    opt.wrap = false
-    opt.expandtab = true
-    opt.cmdheight = 0
-    opt.shiftwidth = 2
-    opt.softtabstop = 2
-    opt.tabstop = 2
-    opt.number = false
-    opt.hlsearch = true
-    opt.incsearch = true
-    opt.smartcase = true
-    opt.ignorecase = true
-    opt.colorscheme = "default"
-   '';
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
+    colorschemes.one.enable = true;
+    opt = {
+     clripboard = "unnamedplus";
+    };
   };
 
 

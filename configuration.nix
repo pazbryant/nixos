@@ -10,7 +10,6 @@
    systemPackages = lib.concatLists [
     (with pkgs; [
       tree
-      neovim
     ])
     (with pkgs-unstable; [])
    ];
