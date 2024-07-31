@@ -1,0 +1,45 @@
+#!/bin/sh
+
+set -x
+set -e
+
+
+# Requirements
+# - rclone
+# - dunstify
+
+local_folder="$HOME/mega"
+remote_folder="mega:MEGAsync"
+
+is_dual="Dual sync"
+is_force="Force sync"
+
+select_sync_method() {
+  printf "%s\n%s" "$is_dual" "$is_force" | rofi -dmenu -i -p "Select option"
+}
+
+force_sync() {
+  rclone sync "$local_folder" "$remote_folder" --copy-links
+}
+
+dual_sync() {
+  rclone copy "$local_folder" "$remote_folder" --copy-links
+  rclone sync "$remote_folder" "$local_folder"
+}
+
+send_notification() {
+  dunstify "Mega" "Successfully"
+}
+
+main() {
+  sync_method=$(select_sync_method)
+  if [ "$sync_method" -eq "$is_dual" ]; then
+    dual_sync
+  else
+    force_sync
+  fi
+
+  send_notification
+}
+
+main

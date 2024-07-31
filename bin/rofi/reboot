@@ -1,0 +1,12 @@
+#!/bin/sh
+
+restart_computer() {
+  dunstify "Restarting" && sleep 1
+  systemctl reboot
+}
+
+main() {
+  restart_computer
+}
+
+main

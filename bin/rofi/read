@@ -1,0 +1,77 @@
+#!/bin/sh
+
+set -e
+
+BOOKS_DIR="$HOME/mega/personal/pc/books"
+LAST_READ_BOOK_PATH="$HOME/.last-read-book"
+
+list_folders() {
+  find "$BOOKS_DIR" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;
+}
+
+list_files_in_folder() {
+  find "$BOOKS_DIR/$1" -type f -exec basename {} \;
+}
+
+select_folder() {
+  list_folders | rofi -dmenu -i -p "Select book folder"
+}
+
+select_book() {
+  list_files_in_folder "$1" | rofi -dmenu -i -p "Select book"
+}
+
+get_last_book() {
+  [ -f "$LAST_READ_BOOK_PATH" ] && cat "$LAST_READ_BOOK_PATH" || echo ""
+}
+
+update_last_read_book() {
+  echo "$1" >"$LAST_READ_BOOK_PATH"
+}
+
+prompt_last_read_book() {
+  local last_read_book_path last_read_book_filename read_option
+  last_read_book_path=$(get_last_book)
+  last_read_book_filename=$(basename "$last_read_book_path")
+
+  if [ -n "$last_read_book_path" ]; then
+    read_option=$(printf "Read last book: %s\nCancel" "$last_read_book_filename" | rofi -dmenu -i -p "Select Action:")
+  else
+    read_option="Cancel"
+  fi
+
+  if [ "$read_option" = "Read last book: $last_read_book_filename" ]; then
+    zathura "$last_read_book_path"
+    exit 0
+  fi
+}
+
+main() {
+  local selected_folder books selected_book selected_book_file_path
+
+  prompt_last_read_book
+
+  selected_folder=$(select_folder)
+  if [ -z "$selected_folder" ]; then
+    echo "No folder selected. Exiting."
+    exit 1
+  fi
+
+  books=$(list_files_in_folder "$selected_folder")
+  if [ -z "$books" ]; then
+    echo "No books found in the selected folder. Exiting."
+    exit 1
+  fi
+
+  selected_book=$(select_book "$selected_folder")
+  if [ -z "$selected_book" ]; then
+    echo "No book selected. Exiting."
+    exit 1
+  fi
+
+  selected_book_file_path="$BOOKS_DIR/$selected_folder/$selected_book"
+  update_last_read_book "$selected_book_file_path"
+  zathura "$selected_book_file_path" &
+}
+
+main
