@@ -86,21 +86,12 @@
     ])
     
     (with pkgs-unstable;[
+     neovim
     ])
    ];
    file = {};
    sessionVariables = {};
   };
-
-  programs.nixvim = {
-    enable = true;
-    defaultEditor = true;
-    colorschemes.one.enable = true;
-    opt = {
-     clripboard = "unnamedplus";
-    };
-  };
-
 
   xsession.windowManager.bspwm = {
    enable = true;
