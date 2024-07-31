@@ -10,6 +10,8 @@
    systemPackages = lib.concatLists [
     (with pkgs; [
       tree
+      parted
+      ventoy
     ])
     (with pkgs-unstable; [])
    ];

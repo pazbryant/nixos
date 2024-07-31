@@ -23,7 +23,6 @@
       fastfetch
       xclip
       syncthing
-      ventoy
       zsh
 
       # theme & fonts
@@ -61,6 +60,9 @@
       starship
       zoxide
       atuin
+      dust
+      fd
+      ripgrep
      
       # window manager
       ncmpcpp
@@ -240,6 +242,7 @@
    profileExtra = "startx";
    shellAliases = {
     ff = "fastfetch";
+    lzg = "lazygit";
    };
   };
 

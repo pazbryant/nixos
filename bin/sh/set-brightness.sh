@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+
 brightness=$(rofi -dmenu -p "Enter brightness (0 to 1.0):" -lines 1)
 
 # Check if the input is '2' and set brightness to 0.5 by default
@@ -27,4 +27,4 @@ if [ "$brightness" = "7" ]; then
   brightness="0.2"
 fi
 
-xrandr --output HDMI-2 --brightness "$brightness"
+xrandr --output HDMI2 --brightness "$brightness"
