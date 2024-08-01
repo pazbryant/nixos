@@ -65,6 +65,8 @@
       ripgrep
      
       # window manager
+      kitty
+      yazi
       ncmpcpp
       zathura
       rclone
@@ -174,6 +176,16 @@
      # move floating window
      "super + {Left,Down,Up,Right}" = "bspc node -v {-30 0,0 30,0 -30,30 0}";
     };
+   };
+  };
+
+  programs.mpv = {
+   enable = true;
+   config = {
+    sub-auto="fuzzy";
+    sub-font="Maple Mono NF";
+    sub-font-size=32;
+    sub-ass-override="force";
    };
   };
 
