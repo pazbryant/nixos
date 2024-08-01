@@ -149,7 +149,7 @@
      "super + shift + d" = "rofi -show window -show-icons";
      "super + m" = "bspc rule -a St -o state=floating follow=on center=true rectangle=700x400+0+0 && st -e fish -c 'ncmpcpp'";
      # scripts
-     "super + x" = "/home/braynt/.dotfiles/bin/select_and_execute.sh";
+     "super + x" = "/home/bryant/.dotfiles/bin/select_and_execute.sh";
      "super + alt + w" = "/home/bryant/.dotfiles/bin/sh/set-wallpaper.sh";
      "super + b" = "/home/bryant/.dotfiles/bin/sh/set-brightness.sh";
      "super + space" = "/home/bryant/.dotfiles/bin/sh/select-keyboard.sh";

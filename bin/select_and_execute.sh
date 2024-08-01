@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Base directory containing the scripts
-BASE_DIR="$HOME/bin/rofi"
+BASE_DIR="$HOME/.dotfiles/bin/rofi"
 
 # Validate if necessary dependencies are installed
 check_dependencies() {
