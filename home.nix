@@ -76,7 +76,10 @@
       bspwm
       sxhkd
       picom
+
       dunst
+      # libnotify
+
       pcmanfm
       pavucontrol # need to be pipewire service to be activated
       maim
@@ -126,9 +129,11 @@
      normal_border_color = "#c7c7c7";
    };
    startupPrograms = [
-    "dunst"
     "picom"
+    "dunst"
     "udiskie"
+    "xset -dpms"
+    "xsetroot -cursor_name left_ptr"
     "pgrep -x sxhkd > /dev/null || sxhkd -m -1"
     "feh --bg-fill /home/bryant/Downloads/1345196.png"
    ];
@@ -163,9 +168,15 @@
 
   services = {
    dunst = {
+    enable = true;
     settings = {
      global = {
       font = "Maple Mono NF 9";
+      separator_height = "15";
+      separator_color = "#00000000";
+      mouse_left_click = "do_action, close_current";
+      mouse_right_click = "close_all";
+      browser = "#{pkgs.firefox}/bin/firefox";
      };
      urgency_low = {
       background = "#eff1f5";
