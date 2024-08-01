@@ -26,9 +26,6 @@
       zsh
 
       # theme & fonts
-      overpass
-      font-awesome
-      maple-mono-NF
       capitaine-cursors
       colloid-gtk-theme
       colloid-icon-theme
@@ -64,10 +61,13 @@
       dust
       fd
       ripgrep
+
+      yazi
+      ueberzugpp # image viewer
+      ffmpegthumbnailer # video thumbnails
+      poppler # pdf reder library
      
       # window manager
-      kitty
-      yazi
       ncmpcpp
       zathura
       rclone
@@ -79,12 +79,12 @@
       picom
       dunst
       pcmanfm
-      pavucontrol
+      pavucontrol # need to be pipewire service to be activated
       maim
       rofi
       polybar
       feh
-      udiskie
+      udiskie # need udev2 service to be activated
       translate-shell
      
       # extra
@@ -115,22 +115,34 @@
     ];
    };
    settings = {
-     border_width = 3;
+     top_padding = "0";
+     bottom_padding = "11";
+     window_gap = "10";
+     split_ratio = "0.50";
+     gapless_monocle = "true";
+     borderless_monocle = "true";
+     focus_follows_pointer = "false";
+     border_width = "3";
      focused_border_color = "#ffaf4d";
      normal_border_color = "#c7c7c7";
    };
    startupPrograms = [
     "dunst"
     "picom"
+    "udiskie"
+   ];
+   extraConfig = ''
+    "xset -dpms"
+    "xsetroot -curson_name left_ptr"
     "pgrep -x sxhkd > /dev/null || sxhkd -m -1"
     "feh --bg-fill /home/bryant/Downloads/1345196.png"
-   ];
+   '';
   };
 
   qt = {
    enable = true;
    platformTheme = {
-    name = "gtk3";
+    name = "Maple Mono NF";
    };
    style = {
     name = "breeze";
@@ -140,7 +152,7 @@
   gtk = {
    enable = true;
    font = {
-    name = "Overpass";
+    name = "Maple Mono NF";
     size = 9;
    };
    theme = {
