@@ -182,11 +182,11 @@
 
   programs.git = {
    enable = true;
+   userName = "Bryant Santiago";
+   userEmail = "pazbryant@proton.me";
    extraConfig = {
     core = {
-     user = "Bryant Santiago";
-     email = "pazbryant7@proton.me";
-     editor = "vi";
+     editor = "nvim";
     };
    };
    aliases = {
