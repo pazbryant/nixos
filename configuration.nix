@@ -56,9 +56,6 @@
   };
 
   services = {
-   getty = {
-    autoLoginUser = "bryant";
-   };
    udisks2 = {
     enable = true;
    };
