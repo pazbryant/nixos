@@ -136,8 +136,8 @@
      "super + Tab" = "bspc desktop -f last";
      "super + {bracketleft,braceleft,parenleft,percent,equal,ampersand,parenright}" = "bspc desktop -f '^{1-7}'";
      "super + shift {1-7}" = "bspc node -d '^{1-7}'";
-     "super + w" = "bspc node -t \~floating";
-     "super + shift + w" = "bspc desktop -l next";
+     "super + w" = "bspc desktop -l next";
+     "super + shift + w" = "bspc node -t \~floating";
      # main personal key bindings
      "super + a" = "pavucontrol";
      "super + e" = "pcmanfm";
