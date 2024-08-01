@@ -140,8 +140,8 @@
   gtk = {
    enable = true;
    font = {
-    name = "Overpass";
-    size = 10;
+    name = "Overpass SemiBold";
+    size = 9.5;
    };
    theme = {
     name = "Colloid-Light";
