@@ -29,9 +29,10 @@
       overpass
       font-awesome
       maple-mono-NF
-      papirus-icon-theme
       capitaine-cursors
-      paper-gtk-theme
+      colloid-gtk-theme
+      colloid-icon-theme
+      dconf
      
       # development
       piper
@@ -124,6 +125,33 @@
     "pgrep -x sxhkd > /dev/null || sxhkd -m -1"
     "feh --bg-fill /home/bryant/Downloads/1345196.png"
    ];
+  };
+
+  qt = {
+   enable = true;
+   platformTheme = {
+    name = "gtk3";
+   };
+   style = {
+    name = "breeze";
+   };
+  };
+
+  gtk = {
+   enable = true;
+   font = {
+    name = "Overpass";
+    size = 10;
+   };
+   theme = {
+    name = "Colloid-Light";
+   };
+   cursorTheme = {
+    name = "capitaine-cursors-white";
+   };
+   iconTheme = {
+    name = "Colloid-light";
+   };
   };
 
   services = {
