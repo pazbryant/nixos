@@ -163,6 +163,25 @@
   };
 
   services = {
+   dunst = {
+    settings = {
+     global = {
+      font = "Maple Mono NF 9";
+     };
+     urgency_low = {
+      background = "#eff1f5";
+      foreground = "#4c4f69";
+     };
+     urgency_normal = {
+      background = "#dce0e8";
+      foreground = "#4c4f69";
+     };
+     urgency_critical = {
+      background = "#d20f39";
+      foreground = "#ffffff";
+     };
+    };
+   };
    sxhkd = {
     enable = true;
     keybindings = {
