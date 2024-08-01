@@ -56,6 +56,9 @@
   };
 
   services = {
+   udisks2 = {
+    enable = true;
+   };
    ratbagd = {
     enable = true; # needed for piper
    };
