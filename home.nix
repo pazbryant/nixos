@@ -84,6 +84,7 @@
       polybar
       feh
       udiskie
+      translate-shell
      
       # extra
       obsidian
@@ -179,6 +180,22 @@
    };
   };
 
+  programs.git = {
+   enable = true;
+   extraConfig = {
+    core = {
+     user = "Bryant Santiago";
+     email = "pazbryant7@proton.me";
+     editor = "vi";
+    };
+   };
+   aliases = {
+    glg = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
+    ggpush = "git push origin $(git rev-parse --abbrev-ref HEAD)";
+    ggpull = "git pull origin $(git rev-parse --abbrev-ref HEAD)";
+   };
+  };
+
   programs.mpv = {
    enable = true;
    config = {
@@ -270,8 +287,17 @@
    };
     profileExtra = "startx";
     shellAliases = {
+     sp = "systemctl suspend";
+     vi = "NVIM_APP_NAME='minimal' nvim";
+     transes = "trans en:es";
+     sudo = "sudo ";
+     rel = "xrdb merge ~/.Xresources && kill -USR1 $(pidof st)";
+     cr7 = "mpv ~/Videos/cr7/dios.mp4";
+     sht = "shutdown now";
+     clear = "clear; printf '\\033[4q'";
      ff = "fastfetch";
      lzg = "lazygit";
+     dh = "rm ~/.history.db ~/.zsh_history";
     };
   };
 
