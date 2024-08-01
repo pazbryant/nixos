@@ -247,6 +247,21 @@
    };
   };
 
+  programs.zathura = {
+   enable = true;
+   options = {
+    "collection-clipboard" = "clipboard";
+    "incremental-search" = "true";
+    "seach-hadjust" = "true";
+    "adjust-open" = "width";
+    "font" = "Maple Mono NF Bold 9";
+   };
+   mappings = {
+    "[normal] f" = "toggle_fullscreen";  
+    "[fullscreen] f" = "toggle_fullscreen";  
+   };
+  };
+
   programs.git = {
    enable = true;
    userName = "Bryant Santiago";
