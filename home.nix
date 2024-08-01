@@ -173,6 +173,8 @@
      global = {
       font = "Maple Mono NF 9";
       separator_height = "15";
+      frame_width = "1";
+      frame_color = "#21203e";
       separator_color = "#00000000";
       mouse_left_click = "do_action, close_current";
       mouse_right_click = "close_all";
