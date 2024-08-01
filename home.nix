@@ -68,6 +68,7 @@
       ncmpcpp
       zathura
       rclone
+      rsync
       mpd
       mpv
       bspwm
@@ -80,6 +81,7 @@
       rofi
       polybar
       feh
+      udiskie
      
       # extra
       obsidian
