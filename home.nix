@@ -139,7 +139,7 @@
      "super + {bracketleft,braceleft,parenleft,percent,equal,ampersand,parenright}" = "bspc desktop -f '^{1-7}'";
      "super + shift {1-7}" = "bspc node -d '^{1-7}'";
      "super + w" = "bspc desktop -l next";
-     "super + shift + w" = "bspc node -t \~floating";
+     "super + shift + w" = "bspc node -t \\~floating";
      # main personal key bindings
      "super + a" = "pavucontrol";
      "super + e" = "pcmanfm";
@@ -240,12 +240,27 @@
 
   programs.zsh = {
    enable = true;
-   sessionVariables = {};
-   profileExtra = "startx";
-   shellAliases = {
-    ff = "fastfetch";
-    lzg = "lazygit";
+   sessionVariables = {
+    EDITOR="nvim";
+    VISUAL="nvim";
+    TERMINAL="st";
+    SUDO_EDITOR="nvim";
+    BROWSER="firefox";
+    # GTK_THEME="firefox";
+    VIDEO="mpv";
+    COLORTERM="truecolor";
+    OPENER="xdg-open";
+    PAGER="less";
+    BAT_PAGER="less";
+    WM="bspwm";
+    MANPAGER="nvim +Man";
+    SXHKD_SHELL="zsh";
    };
+    profileExtra = "startx";
+    shellAliases = {
+     ff = "fastfetch";
+     lzg = "lazygit";
+    };
   };
 
   programs.atuin = {
@@ -312,7 +327,7 @@
 
   programs.tmux = {
    enable = true;
-   shell = "\${pkgs.zsh}/bin/zsh";
+   shell = "${pkgs.zsh}/bin/zsh";
    baseIndex = 1;
    prefix = "C-Space";
    mouse = true;
