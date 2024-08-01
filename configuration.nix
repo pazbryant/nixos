@@ -56,6 +56,12 @@
   };
 
   services = {
+   displayManager = {
+    autoLogin = {
+     enable = true;
+     user = "bryant";
+    };
+   };
    udisks2 = {
     enable = true;
    };
@@ -75,17 +81,15 @@
     enable = true;
     videoDrivers = ["intel"];
     displayManager = {
+     startx = {
+      enable = true;
+     };
      lightdm = {
       enable = false;
      };
     };
     autoRepeatDelay = 200;
     autoRepeatInterval = 30;
-    displayManager = {
-     startx = {
-      enable = true;
-     };
-    };
     xkb = {
      layout = "bryant-dvorak,bryant-dvorak-itl";
 
