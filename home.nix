@@ -167,6 +167,88 @@
   };
 
   services = {
+   picom = {
+    enable = true;
+    shadow = false;
+    backend = "glx";
+    shadowExclude = [
+     "name = 'Notification'"
+     "class_g ?= 'Notify-osd'"
+     "class_g = 'slop'"
+     "class_g = 'Polybar'"
+     "class_g = 'Rofi'"
+     "_GTK_FRAME_EXTENTS@:c"
+    ];
+    inactiveOpacity = 1;
+    menuOpacity = 1;
+    opacityRules = [
+     "100:class_g    = 'Polybar'"
+    ];
+    fadeExclude = [
+      "WM_CLASS@:s *= 'screenkey'"
+     "class_g = 'slop'"
+     "class_g = 'bspwm'"
+    ];
+    fadeSteps = [
+     0.04
+     0.04
+    ];
+    wintypes = {
+     tooltip = {
+      fade = true;
+      shadow = false;
+      focus = true;
+      full-shadow = false;
+     };
+     fullscreen = {
+      fade = true;
+      shadow = false;
+      focus = true; };
+    };
+    settings = {
+     mark-wmwin-focused = true;
+     mark-ovredir-focused = true;
+     detect-rounded-corners = true;
+     detect-client-opacity = true;
+     detect-transient = true;
+     unredir-if-possible = true;
+     log-level = "warn";
+     detect-client-leader = true;
+     glx-copy-from-front = false;
+
+     # Corners #
+     corner-radius = 0;
+     rounded-corners-exclude = [
+      "window_type = 'dropdown_menu'"
+      "window_type = 'popup_menu'"
+      "window_type = 'popup'"
+      "class_g = 'Polybar'"
+      "class_g = 'Rofi'"
+     ];
+
+     # Shadows #
+     shadow-radius = 18;
+     shadow-offset-x = -25;
+     shadow-offset-y = -22;
+
+     # inactive focus
+     inactive-dim = 1.0;
+     focus-exclude = [
+      "class_g = 'slop'"
+     ];
+
+     # blur #
+     blur-method = "dual_kawase";
+     blur-strength = 3;
+     blur-background-exclude = [
+      "window_type = 'desktop'"
+      "_GTK_FRAME_EXTENTS@:c"
+      "class_g *= 'slop'"
+     ];
+    };
+   };
+
+
    dunst = {
     enable = true;
     settings = {
