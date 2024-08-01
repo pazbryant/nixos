@@ -56,11 +56,8 @@
   };
 
   services = {
-   displayManager = {
-    autoLogin = {
-     enable = true;
-     user = "bryant";
-    };
+   getty = {
+    autoLoginUser = "bryant";
    };
    udisks2 = {
     enable = true;

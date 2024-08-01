@@ -130,13 +130,9 @@
     "dunst"
     "picom"
     "udiskie"
-   ];
-   extraConfig = ''
-    "xset -dpms"
-    "xsetroot -curson_name left_ptr"
     "pgrep -x sxhkd > /dev/null || sxhkd -m -1"
     "feh --bg-fill /home/bryant/Downloads/1345196.png"
-   '';
+   ];
   };
 
   qt = {
