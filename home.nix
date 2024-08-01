@@ -29,7 +29,6 @@
       capitaine-cursors
       colloid-gtk-theme
       colloid-icon-theme
-      dconf
      
       # development
       piper
