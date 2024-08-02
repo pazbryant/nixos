@@ -8,7 +8,7 @@ set -e
 # - rclone
 # - dunstify
 
-local_folder="$HOME/mega"
+local_folder="$HOME/Mega"
 remote_folder="mega:MEGAsync"
 
 is_dual="Dual sync"

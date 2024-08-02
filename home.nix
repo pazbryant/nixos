@@ -81,6 +81,7 @@
       sxhkd
 
       dunst
+      bandwhich
       # libnotify
 
       pcmanfm
@@ -178,7 +179,6 @@
   services = {
    mpd = {
     enable = true;
-    dataDir = "/home/bryant/.config/mpd";
     network = {
      startWhenNeeded = true;
     };
