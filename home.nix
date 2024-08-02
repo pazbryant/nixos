@@ -137,6 +137,7 @@
     "xset -dpms"
     "xsetroot -cursor_name left_ptr"
     "pgrep -x sxhkd > /dev/null || sxhkd -m -1"
+    "pgrep -x mpd >/dev/null || mpd"
     "feh --bg-fill /home/bryant/Downloads/1345196.png"
    ];
   };
@@ -177,6 +178,7 @@
   services = {
    mpd = {
     enable = true;
+    dataDir = "/home/bryant/.config/mpd";
     network = {
      startWhenNeeded = true;
     };
