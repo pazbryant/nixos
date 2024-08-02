@@ -47,6 +47,7 @@
       fzf
       jq
       lazygit
+      lazydocker
       postgresql
       tealdeer
       terraform
@@ -245,7 +246,7 @@
     };
    };
   };
-
+  
   programs.zathura = {
    enable = true;
    options = {
@@ -348,6 +349,7 @@
 
   programs.zsh = {
    enable = true;
+   defaultKeymap = "emacs";
    sessionVariables = {
     EDITOR="nvim";
     VISUAL="nvim";
@@ -376,11 +378,13 @@
     ff = "fastfetch";
     lzg = "lazygit";
     dh = "rm ~/.history.db ~/.zsh_history";
-    backend = "glx";  # or "xrender"
     glg = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
     ggpush = "git push origin $(git rev-parse --abbrev-ref HEAD)";
     ggpull = "git pull origin $(git rev-parse --abbrev-ref HEAD)";
    };
+   profileExtra = ''
+    [[ -z $DISPLAY && $(tty) = /dev/tty1 ]] && startx
+   '';
   };
 
   programs.atuin = {
