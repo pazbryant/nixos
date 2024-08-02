@@ -82,6 +82,7 @@
 
       dunst
       bandwhich
+      spotdl
       # libnotify
 
       pcmanfm
