@@ -58,7 +58,7 @@
   services = {
    displayManager = {
     defaultSession = "none+bspwm";
-    autoLogi = {
+    autoLogin = {
      enable = true;
      user = "bryant";
     };
