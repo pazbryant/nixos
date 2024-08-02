@@ -36,6 +36,7 @@
       less
       vscode
       gopass
+
       unrar
       unzip
       go
@@ -167,7 +168,20 @@
    };
   };
 
+  xdg = {
+   userDirs = {
+    enable = true;
+   };
+  };
+
   services = {
+   mpd = {
+    enable = true;
+    network = {
+     startWhenNeeded = true;
+    };
+   };
+
    dunst = {
     enable = true;
     settings = {
@@ -245,6 +259,10 @@
      "super + {Left,Down,Up,Right}" = "bspc node -v {-30 0,0 30,0 -30,30 0}";
     };
    };
+  };
+
+  programs.ncmpcpp = {
+   enable = true;
   };
   
   programs.zathura = {
@@ -377,6 +395,7 @@
     clear = "clear; printf '\\033[4q'";
     ff = "fastfetch";
     lzg = "lazygit";
+    lzd = "lazydocker";
     dh = "rm ~/.history.db ~/.zsh_history";
     glg = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
     ggpush = "git push origin $(git rev-parse --abbrev-ref HEAD)";
@@ -655,7 +674,7 @@
     font = {
      size = 9;
      offset = {
-      x = 1;
+      x = 0;
       y = 0;
      };
      normal = {
