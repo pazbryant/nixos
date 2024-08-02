@@ -73,7 +73,6 @@
    };
    xserver = {
     enable = true;
-    videoDrivers = ["intel"];
     displayManager = {
      startx = {
       enable = true;
