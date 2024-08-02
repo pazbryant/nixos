@@ -67,11 +67,13 @@
       poppler # pdf reder library
      
       # window manager
-      ncmpcpp
       zathura
       rclone
       rsync
+
       mpd
+      ncmpcpp
+
       mpv
       bspwm
       sxhkd
@@ -229,7 +231,6 @@
      "alt + Print" = "./bin/sh/take-streenshots.sh cropped";
      "shift + Print" = "./bin/sh/take-streenshots.sh full";
      # volume
-     "shift + BackSpace" = "mpc toggle";
      # resize windows
      "super + alt + l" = "bspc node -z right 20 0 || bspc node -z left 20 0";
      "super + alt + h" = "bspc node -z right -20 0 || bspc node -z left -20 0";
