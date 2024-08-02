@@ -53,13 +53,13 @@
       jetbrains.datagrip
       jetbrains.datagrip
       postman
-      tmux
       starship
       zoxide
       atuin
       dust
       fd
       ripgrep
+      tmux
 
       yazi
       ueberzugpp # image viewer
@@ -354,7 +354,7 @@
     TERMINAL="st";
     SUDO_EDITOR="nvim";
     BROWSER="firefox";
-    # GTK_THEME="firefox";
+    GTK_THEME="Colloid-Light";
     VIDEO="mpv";
     COLORTERM="truecolor";
     OPENER="xdg-open";
@@ -364,24 +364,23 @@
     MANPAGER="nvim +Man";
     SXHKD_SHELL="zsh";
    };
-    profileExtra = "startx";
-    shellAliases = {
-     sp = "systemctl suspend";
-     vi = "NVIM_APP_NAME='minimal' nvim";
-     transes = "trans en:es";
-     sudo = "sudo ";
-     rel = "xrdb merge ~/.Xresources && kill -USR1 $(pidof st)";
-     cristiano = "mpv ~/Videos/cr7/dios.mp4";
-     sht = "shutdown now";
-     clear = "clear; printf '\\033[4q'";
-     ff = "fastfetch";
-     lzg = "lazygit";
-     dh = "rm ~/.history.db ~/.zsh_history";
-     backend = "glx";  # or "xrender"
-     glg = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
-     ggpush = "git push origin $(git rev-parse --abbrev-ref HEAD)";
-     ggpull = "git pull origin $(git rev-parse --abbrev-ref HEAD)";
-    };
+   shellAliases = {
+    sp = "systemctl suspend";
+    vi = "NVIM_APP_NAME='minimal' nvim";
+    transes = "trans en:es";
+    sudo = "sudo ";
+    rel = "xrdb merge ~/.Xresources && kill -USR1 $(pidof st)";
+    cristiano = "mpv ~/Videos/cr7/dios.mp4";
+    sht = "shutdown now";
+    clear = "clear; printf '\\033[4q'";
+    ff = "fastfetch";
+    lzg = "lazygit";
+    dh = "rm ~/.history.db ~/.zsh_history";
+    backend = "glx";  # or "xrender"
+    glg = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
+    ggpush = "git push origin $(git rev-parse --abbrev-ref HEAD)";
+    ggpull = "git pull origin $(git rev-parse --abbrev-ref HEAD)";
+   };
   };
 
   programs.atuin = {
@@ -451,6 +450,8 @@
    sensibleOnTop = false;
    secureSocket = false;
    extraConfig = ''
+    set -g default-shell "\${pkgs.zsh}/bin/zsh"
+
     # set prefix
     unbind-key C-b
     set -g prefix C-Space

@@ -64,7 +64,7 @@
     };
    };
    udisks2 = {
-    enable = true;
+    enable = true; # needed for udiskie
    };
    ratbagd = {
     enable = true; # needed for piper
@@ -126,8 +126,6 @@
      extraGroups = [ 
       "wheel"
       "networkmanager" 
-      "video"
-      "input"
       ];
     }; 
    };
