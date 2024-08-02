@@ -81,7 +81,7 @@
    xserver = {
     enable = true;
     videoDrivers = [ 
-     "modesetting"  # intel
+     "intel"  # intel
     ];
     windowManager = {
      bspwm = {
