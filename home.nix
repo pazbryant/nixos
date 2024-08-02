@@ -279,7 +279,7 @@
 
   programs.ncmpcpp = {
    enable = true;
-   mpdMusicDic = "/home/bryant/Music";
+   mpdMusicDir = "/home/bryant/Music";
   };
   
   programs.zathura = {
