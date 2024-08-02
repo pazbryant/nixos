@@ -448,6 +448,8 @@
 
   programs.tmux = {
    enable = true;
+   sensibleOnTop = false;
+   secureSocket = false;
    extraConfig = ''
     # set prefix
     unbind-key C-b

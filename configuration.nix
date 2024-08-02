@@ -56,6 +56,13 @@
   };
 
   services = {
+   displayManager = {
+    defaultSession = "none+bspwm";
+    autoLogi = {
+     enable = true;
+     user = "bryant";
+    };
+   };
    udisks2 = {
     enable = true;
    };
@@ -73,6 +80,14 @@
    };
    xserver = {
     enable = true;
+    videoDrivers = [ 
+     "modesetting"  # intel
+    ];
+    windowManager = {
+     bspwm = {
+      enable = true;
+     };
+    };
     displayManager = {
      startx = {
       enable = true;
