@@ -93,7 +93,7 @@
       enable = true;
      };
      lightdm = {
-      enable = false;
+      enable = true;
      };
     };
     autoRepeatDelay = 200;
