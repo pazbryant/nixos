@@ -83,6 +83,7 @@
       dunst
       bandwhich
       spotdl
+      ffmpeg
       # libnotify
 
       pcmanfm
