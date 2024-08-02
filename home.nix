@@ -279,6 +279,7 @@
 
   programs.ncmpcpp = {
    enable = true;
+   mpdMusicDic = "/home/bryant/Music";
   };
   
   programs.zathura = {
