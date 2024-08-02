@@ -448,14 +448,112 @@
 
   programs.tmux = {
    enable = true;
-   shell = "${pkgs.zsh}/bin/zsh";
-   baseIndex = 1;
-   prefix = "C-Space";
-   mouse = true;
-   keyMode = "vi";
-   escapeTime = 0;
-   historyLimit = 10000;
-   sensibleOnTop = false;
+   extraConfig = ''
+    # set prefix
+    unbind-key C-b
+    set -g prefix C-Space
+    
+    # set mouse mode on
+    set -g mouse on
+    
+    # set focus event (nvim)
+    set-option -g focus-events on
+    
+    # set vim key binds
+    set -g mode-keys vi
+    set -s set-clipboard on
+    set-option -s set-clipboard on
+    
+    # disable status bar at start
+    set -g status off
+    bind-key b set-option status
+    
+    # delay after prefix
+    set -sg escape-time 0
+    
+    # set true colors compatibility
+    set -g default-terminal "tmux-256color"
+    set -sa terminal-overrides ',*:RGB'
+    
+    # enter copy mode with "v"
+    bind 'v' copy-mode
+    bind-key -T copy-mode-vi v send-keys -X begin-selection
+    
+    # create new window current path
+    bind-key c new-window -c "#{pane_current_path}"
+    
+    # split vertical panel in current path
+    bind-key % split-window -h -c "#{pane_current_path}"
+    bind-key '"' split-window -c "#{pane_current_path}"
+    
+    # display panel numbers time
+    set -g display-panes-time 10000
+    
+    # remove kill panel confirmation 
+    unbind-key x
+    bind-key x kill-pane
+    
+    # remove kill session confirmation
+    bind-key X kill-session
+    
+    # set full screen
+    unbind-key z
+    bind-key f resize-pane -Z
+    
+    # panel border type
+    set -g pane-border-lines simple
+    
+    # terminal history limit
+    set-option -g history-limit 5000
+    
+    # vim-like pane switching
+    bind ^ last-window
+    bind k select-pane -U
+    bind j select-pane -D
+    bind h select-pane -L
+    bind l select-pane -R
+    
+    # bspwm layout switching
+    bind-key 1 select-layout even-horizontal
+    bind-key 2 select-layout even-vertical
+    bind-key 3 select-layout main-horizontal
+    bind-key 4 select-layout main-vertical
+    bind-key 5 select-layout tiled
+    
+    # vim panel resizing
+    bind-key -r C-j resize-pane -D
+    bind-key -r C-k resize-pane -U
+    bind-key -r C-h resize-pane -L
+    bind-key -r C-l resize-pane -R
+    
+    # kill other sessions
+    bind-key K run-shell ~/bin/sh/tmux-kill-other-sessions.sh
+    bind-key k run-shell ~/bin/sh/tmux-kill-other-windows.sh
+    
+    bind-key D run-shell "\
+    ~/bin/sh/tmux-new-session.sh /home/bryant/Documents/github/dotfiles/"
+    
+    bind-key H run-shell "~/bin/sh/tmux-new-session.sh /home/bryant/"
+    
+    bind-key T run-shell "~/bin/sh/tmux-new-session.sh \
+    /home/bryant/Documents/github/notes/"
+    
+    bind-key N run-shell "~/bin/sh/tmux-new-session.sh \
+    /home/bryant/Documents/github/codeeditors/nvim/"
+    
+    bind-key P run-shell "~/bin/sh/tmux-new-session.sh \
+    /home/bryant/.password-store/"
+    
+    bind-key F run-shell "tmux neww ~/bin/sh/tmux-new-session.sh"
+    
+    bind-key G run-shell "~/bin/sh/tmux-new-session.sh \
+    /home/bryant/.password-store/"
+    
+    bind-key S run-shell "tmux neww ~/bin/sh/tmux-session-selector.sh"
+    
+    # reload tmux configuration
+    bind r source-file ~/.tmux.conf \; display-message "tmux reloaded."
+   '';
   };
 
   programs.alacritty = {
