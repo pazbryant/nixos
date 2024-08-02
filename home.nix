@@ -265,14 +265,12 @@
    userName = "Bryant Santiago";
    userEmail = "pazbryant@proton.me";
    extraConfig = {
+    init = {
+     defaultBranch = "main";
+    };
     core = {
      editor = "nvim";
     };
-   };
-   aliases = {
-    glg = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
-    ggpush = "git push origin $(git rev-parse --abbrev-ref HEAD)";
-    ggpull = "git pull origin $(git rev-parse --abbrev-ref HEAD)";
    };
   };
 
@@ -372,12 +370,16 @@
      transes = "trans en:es";
      sudo = "sudo ";
      rel = "xrdb merge ~/.Xresources && kill -USR1 $(pidof st)";
-     cr7 = "mpv ~/Videos/cr7/dios.mp4";
+     cristiano = "mpv ~/Videos/cr7/dios.mp4";
      sht = "shutdown now";
      clear = "clear; printf '\\033[4q'";
      ff = "fastfetch";
      lzg = "lazygit";
      dh = "rm ~/.history.db ~/.zsh_history";
+     backend = "glx";  # or "xrender"
+     glg = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
+     ggpush = "git push origin $(git rev-parse --abbrev-ref HEAD)";
+     ggpull = "git pull origin $(git rev-parse --abbrev-ref HEAD)";
     };
   };
 
