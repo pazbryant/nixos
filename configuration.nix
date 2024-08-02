@@ -207,10 +207,10 @@
   virtualisation = {
    docker = {
     enable = true;
-   };
-   rootless = {
+    rootless = {
     enable = true;
     setSocketVariable = true;
+    };
    };
   };
 
