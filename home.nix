@@ -107,7 +107,7 @@
   xsession.windowManager.bspwm = {
    enable = true;
    monitors = {
-    HDMI2 = [
+    HDMI-2 = [
       "1"
       "2"
       "3"

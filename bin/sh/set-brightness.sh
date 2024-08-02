@@ -27,4 +27,4 @@ if [ "$brightness" = "7" ]; then
   brightness="0.2"
 fi
 
-xrandr --output HDMI2 --brightness "$brightness"
+xrandr --output HDMI-2 --brightness "$brightness"
