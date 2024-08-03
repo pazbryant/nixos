@@ -181,6 +181,16 @@
   services = {
    mpd = {
     enable = true;
+    musicDirectory = "~/Music";
+    network = {
+     startWhenNeeded = true;
+    };
+    extraConfig = ''
+     audio_output {
+      type "pipewire"
+      name "PipeWire Sound Server"
+     }
+    '';
    };
 
    dunst = {
@@ -262,6 +272,44 @@
    };
   };
 
+  programs.ncmpcpp = {
+   enable = true;
+   mpdMusicDir = "/home/bryant/Music";
+   settings = ''
+    # general
+    ncmpcpp_directory = ~/.config/ncmpcpp
+    lyrics_directory = ~/.config/mpd/lyrics
+
+    # mpd
+    mpd_host = 127.0.0.1
+    mpd_port = 6600
+
+    # music visualizer
+    visualizer_data_source = "/tmp/mpd.fifo"
+    visualizer_output_name = "my_fifo"
+    visualizer_in_stereo = "yes"
+
+    # starting
+    playlist_display_mode = "columns"
+    browser_display_mode = "columns"
+    search_engine_display_mode = "columns"
+    playlist_editor_display_mode = "columns"
+    autocenter_mode = "yes"
+    centered_cursor = "yes"
+    user_interface = "classic"
+    follow_now_playing_lyrics = "yes"
+    lyrics_fetchers = tekstowo, azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics , zeneszoveg, internet
+    external_editor = "nvim"
+    main_window_color = "default"
+
+    # ui
+    header_visibility = "no"
+    statusbar_visibility = "yes"
+    titles_visibility = "yes"
+    enable_window_title = "yes"
+   '';
+  };
+  
   programs.zathura = {
    enable = true;
    options = {
@@ -362,6 +410,32 @@
    };
   };
 
+  programs.fzf = {
+   enable = true;
+   enableZshIntegration = true;
+   defaultCommand = "fd --type f";
+   defaultOptions = [
+    "--strip-cwd-prefix"
+    "--hidden"
+    "---follow"
+    "---exclude=git"
+   ];
+   colors = {
+    "bg" = "#eff1f5";
+    "bg+" = "#ccd0da";
+    "spinner" = "#dc8a78";
+    "hl" = "#d20f39";
+    "fg" = "#4c4f69";
+    "header" = "#d20f39";
+    "info" = "#8839ef";
+    "pointer" = "#dc8a78";
+    "marker" = "#dc8a78";
+    "fg+" = "#4c4f69";
+    "prompt" = "#8839ef";
+    "hl+" = "#d20f39";
+   };
+  };
+
   programs.zsh = {
    enable = true;
    defaultKeymap = "emacs";
@@ -380,6 +454,7 @@
     WM="bspwm";
     MANPAGER="nvim +Man";
     SXHKD_SHELL="zsh";
+    MPD_HOST="/run/user/1000/mpd/socket";
    };
    shellAliases = {
     sp = "systemctl suspend";
