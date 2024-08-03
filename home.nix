@@ -272,6 +272,21 @@
    };
   };
 
+  programs.rofi = {
+   enable = true;
+   terminal = "\${pkgs.alacritty}/bin/alacritty";
+   extraConfig = {
+    modi = "window";
+    terminal = "alacritty";
+    hide-scrollbar = true;
+    display-run = "";
+    display-drun = "";
+    display-window = "";
+    show-match = true;
+   };
+   theme = "/home/bryant/.dotfiles/theme.rasi";
+  };
+
   programs.fzf = {
    enable = true;
    enableZshIntegration = true;
