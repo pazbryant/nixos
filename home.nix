@@ -272,42 +272,85 @@
    };
   };
 
+  programs.fzf = {
+   enable = true;
+   enableZshIntegration = true;
+   defaultCommand = "fd --type f";
+   defaultOptions = [
+    "--preview-window noborder"
+    "--height=50%"
+   ];
+   colors = {
+    bg = "#eff1f5";
+   "bg+" = "#ccd0da";
+    spinner = "#dc8a78";
+    hl = "#d20f39";
+    fg = "#4c4f69";
+    header = "#d20f39";
+    info = "#8839ef";
+    pointer = "#dc8a78";
+    marker = "#dc8a78";
+   "fg+" = "#4c4f69";
+    prompt = "#8839ef";
+   "hl+" = "#d20f39";
+   };
+  };
+
   programs.ncmpcpp = {
    enable = true;
    mpdMusicDir = "/home/bryant/Music";
-   settings = ''
+   settings = {
     # general
-    ncmpcpp_directory = ~/.config/ncmpcpp
-    lyrics_directory = ~/.config/mpd/lyrics
-
+    ncmpcpp_directory = "~/.config/ncmpcpp";
+    
     # mpd
-    mpd_host = 127.0.0.1
-    mpd_port = 6600
-
+    mpd_host = "127.0.0.1";
+    mpd_port = "6600";
+    
     # music visualizer
-    visualizer_data_source = "/tmp/mpd.fifo"
-    visualizer_output_name = "my_fifo"
-    visualizer_in_stereo = "yes"
-
+    visualizer_data_source = "/tmp/mpd.fifo";
+    visualizer_output_name = "my_fifo";
+    visualizer_in_stereo = "yes";
+    
     # starting
-    playlist_display_mode = "columns"
-    browser_display_mode = "columns"
-    search_engine_display_mode = "columns"
-    playlist_editor_display_mode = "columns"
-    autocenter_mode = "yes"
-    centered_cursor = "yes"
-    user_interface = "classic"
-    follow_now_playing_lyrics = "yes"
-    lyrics_fetchers = tekstowo, azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics , zeneszoveg, internet
-    external_editor = "nvim"
-    main_window_color = "default"
-
+    playlist_display_mode = "columns";
+    browser_display_mode = "columns";
+    search_engine_display_mode = "columns";
+    playlist_editor_display_mode = "columns";
+    autocenter_mode = "yes";
+    centered_cursor = "yes";
+    user_interface = "classic";
+    follow_now_playing_lyrics = "yes";
+    lyrics_fetchers = "tekstowo, azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, zeneszoveg, internet";
+    external_editor = "nvim";
+    main_window_color = "default";
+    
     # ui
-    header_visibility = "no"
-    statusbar_visibility = "yes"
-    titles_visibility = "yes"
-    enable_window_title = "yes"
-   '';
+    header_visibility = "no";
+    statusbar_visibility = "yes";
+    titles_visibility = "yes";
+    enable_window_title = "yes";
+   };
+   bindings = [
+     { key = "="; command = "show_clock"; }
+     { key = "+"; command = "volume_up"; }
+     { key = "-"; command = "volume_down"; }
+     { key = "j"; command = "scroll_down"; }
+     { key = "k"; command = "scroll_up"; }
+     { key = "ctrl-u"; command = "page_up"; }
+     { key = "ctrl-d"; command = "page_down"; }
+     { key = "h"; command = "previous_column"; }
+     { key = "l"; command = "next_column"; }
+     { key = "."; command = "show_lyrics"; }
+     { key = "n"; command = "next_found_item"; }
+     { key = "N"; command = "previous_found_item"; }
+     { key = "g"; command = "move_home"; }
+     { key = "G"; command = "move_end"; }
+     { key = "0"; command = "replay_song"; }
+     { key = "ctrl-f"; command = "page_down"; }
+     { key = "ctrl-b"; command = "page_up"; }
+     { key = "D"; command = [ "delete_playlist_items" "delete_browser_items" "delete_stored_playlist" ]; }
+   ];
   };
   
   programs.zathura = {
@@ -407,32 +450,6 @@
     Work = {
      id = 1;
     };
-   };
-  };
-
-  programs.fzf = {
-   enable = true;
-   enableZshIntegration = true;
-   defaultCommand = "fd --type f";
-   defaultOptions = [
-    "--strip-cwd-prefix"
-    "--hidden"
-    "---follow"
-    "---exclude=git"
-   ];
-   colors = {
-    "bg" = "#eff1f5";
-    "bg+" = "#ccd0da";
-    "spinner" = "#dc8a78";
-    "hl" = "#d20f39";
-    "fg" = "#4c4f69";
-    "header" = "#d20f39";
-    "info" = "#8839ef";
-    "pointer" = "#dc8a78";
-    "marker" = "#dc8a78";
-    "fg+" = "#4c4f69";
-    "prompt" = "#8839ef";
-    "hl+" = "#d20f39";
    };
   };
 
