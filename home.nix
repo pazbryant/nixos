@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-unstable, st-pkgs, ... }:
 
 {
   home.username = "bryant";
@@ -103,6 +103,10 @@
     
     (with pkgs-unstable;[
      neovim
+    ])
+
+    (with st-pkgs;[
+     st-snazzy
     ])
    ];
    file = {};
@@ -274,10 +278,10 @@
 
   programs.rofi = {
    enable = true;
-   terminal = "\${pkgs.alacritty}/bin/alacritty";
+   terminal = "\${pkgs.st}/bin/st";
    extraConfig = {
     modi = "window";
-    terminal = "alacritty";
+    terminal = "st";
     hide-scrollbar = true;
     display-run = "";
     display-drun = "";

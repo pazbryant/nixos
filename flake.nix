@@ -6,13 +6,16 @@
   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   home-manager.url = "github:nix-community/home-manager/release-24.05";
   home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  st.url = "github:pazbryant/st";
+  st.inputs.nixpkgs.follows = "nixpkgs-unstable";
  };
 
  outputs = {
   self, 
   nixpkgs, 
   nixpkgs-unstable, 
-  home-manager, 
+  home-manager,
+  st,
   ...
  }:
  let 
@@ -20,6 +23,7 @@
   system = "x86_64-linux";
   pkgs = nixpkgs.legacyPackages.${system};
   pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+  st-pkgs = st.packages.${system};
  in {
   nixosConfigurations = {
    nixos = lib.nixosSystem {
@@ -34,9 +38,12 @@
   homeConfigurations = {
    bryant = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    modules = [ ./home.nix ];
+    modules = [ 
+     ./home.nix
+    ];
     extraSpecialArgs = {
      inherit pkgs-unstable;
+     inherit st-pkgs;
     };
    };
   };
