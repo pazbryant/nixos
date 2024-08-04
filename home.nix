@@ -70,7 +70,6 @@
      
       # window manager
       zathura
-      rclone
       rsync
 
       mpd
@@ -104,6 +103,7 @@
     
     (with pkgs-unstable;[
      neovim
+     rclone
     ])
 
     (with st-pkgs;[
@@ -254,7 +254,7 @@
      "super + shift + Return" = "firefox -P Work";
      "super + d" = "rofi -show drun -show-icons";
      "super + shift + d" = "rofi -show window -show-icons";
-     "super + m" = "bspc rule -a St -o state=floating follow=on center=true rectangle=700x400+0+0 && st -e fish -c 'ncmpcpp'";
+     "super + m" = "bspc rule -a St -o state=floating follow=on center=true rectangle=700x400+0+0 && st -e zsh -c 'ncmpcpp'";
      # scripts
      "super + x" = "/home/bryant/.dotfiles/bin/select_and_execute.sh";
      "super + alt + w" = "/home/bryant/.dotfiles/bin/sh/set-wallpaper.sh";
@@ -505,7 +505,6 @@
     rel = "xrdb merge ~/.Xresources && kill -USR1 $(pidof st)";
     cristiano = "mpv ~/Videos/cr7/dios.mp4";
     sht = "shutdown now";
-    clear = "clear; printf '\\033[4q'";
     ff = "fastfetch";
     lzg = "lazygit";
     lzd = "lazydocker";
@@ -531,7 +530,7 @@
     style = "compact";
     inline_height = 10;
     auto_sync = false;
-    history_filter = [ "^clear" "^z" ];
+    history_filter = [ "^clear" "^cd" ];
     cwd_filter = [ "^/very/secret/area" ];
     max_preview_height = 4;
     show_help = true;
@@ -666,32 +665,32 @@
     bind-key -r C-l resize-pane -R
     
     # kill other sessions
-    bind-key K run-shell ~/bin/sh/tmux-kill-other-sessions.sh
-    bind-key k run-shell ~/bin/sh/tmux-kill-other-windows.sh
+    bind-key K run-shell /home/bryant/.dotfiles/bin/sh/tmux/tmux-kill-other-sessions.sh
+    bind-key k run-shell /home/bryant/.dotfiles/bin/sh/tmux/tmux-kill-other-windows.sh
     
     bind-key D run-shell "\
-    ~/bin/sh/tmux-new-session.sh /home/bryant/Documents/github/dotfiles/"
+    /home/bryant/.dotfiles/bin/sh/tmux-new-session.sh /home/bryant/Documents/github/dotfiles/"
     
-    bind-key H run-shell "~/bin/sh/tmux-new-session.sh /home/bryant/"
+    bind-key H run-shell "/home/bryant/.dotfiles/bin/sh/tmux/tmux-new-session.sh /home/bryant/"
     
-    bind-key T run-shell "~/bin/sh/tmux-new-session.sh \
+    bind-key T run-shell "/home/bryant/.dotfiles/bin/sh/tmux/tmux-new-session.sh \
     /home/bryant/Documents/github/notes/"
     
-    bind-key N run-shell "~/bin/sh/tmux-new-session.sh \
+    bind-key N run-shell "/home/bryant/.dotfiles/bin/sh/tmux/tmux-new-session.sh \
     /home/bryant/Documents/github/codeeditors/nvim/"
     
-    bind-key P run-shell "~/bin/sh/tmux-new-session.sh \
+    bind-key P run-shell "/home/bryant/.dotfiles/bin/sh/tmux/tmux-new-session.sh \
     /home/bryant/.password-store/"
     
-    bind-key F run-shell "tmux neww ~/bin/sh/tmux-new-session.sh"
+    bind-key F run-shell "tmux neww /home/bryant/.dotfiles/bin/sh/tmux/tmux-new-session.sh"
     
-    bind-key G run-shell "~/bin/sh/tmux-new-session.sh \
+    bind-key G run-shell "/home/bryant/.dotfiles/bin/sh/tmux/tmux-new-session.sh \
     /home/bryant/.password-store/"
     
-    bind-key S run-shell "tmux neww ~/bin/sh/tmux-session-selector.sh"
+    bind-key S run-shell "tmux neww /home/bryant/.dotfiles/bin/sh/tmux/tmux-session-selector.sh"
     
     # reload tmux configuration
-    bind r source-file ~/.tmux.conf \; display-message "tmux reloaded."
+    bind r source-file /home/bryant/.config/tmux/tmux.conf \; display-message "tmux reloaded."
    '';
   };
 
