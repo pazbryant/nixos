@@ -9,7 +9,7 @@ set -e
 # - dunstify
 
 local_folder="$HOME/Mega"
-remote_folder="mega:MEGAsync"
+remote_folder="Mega:MEGAsync"
 
 is_dual="Dual sync"
 is_force="Force sync"
