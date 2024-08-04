@@ -9,15 +9,19 @@
   environment = {
    systemPackages = lib.concatLists [
     (with pkgs; [
-      tree
       parted
       ventoy
+      neovim
     ])
-    (with pkgs-unstable; [])
+    (with pkgs-unstable; [
+    ])
    ];
    shells = with pkgs; [ zsh ];
+   variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";   
+   };
   };
-
   boot = {
    loader = {
     systemd-boot = {
@@ -34,27 +38,21 @@
     };
    };
   };
-
-
   networking = {
    networkmanager = {
     enable = true;
    };
   };
-
   time = {
    timeZone = "Mexico/General";
   };
-
   i18n = {
    defaultLocale = "en_US.UTF-8";
   };
-
   console = {
      font = "Lat2-Terminus16";
      useXkbConfig = true; # use xkb.options in tty.
   };
-
   services = {
    displayManager = {
     defaultSession = "none+bspwm";
@@ -122,6 +120,7 @@
    defaultUserShell = pkgs.zsh;
    users = {
     bryant = {
+     useDefaultShell = true;
      isNormalUser = true;
      extraGroups = [ 
       "wheel"
@@ -160,23 +159,8 @@
   };
 
   programs = {
-   dconf = {
+   zsh = { 
     enable = true;
-   };
-  };
-
-  programs = {
-   zsh = {
-    enable = true;
-   }; 
-   mtr = {
-    enable = true;
-   };
-   gnupg = {
-    agent = {
-     enable = true;
-     enableSSHSupport = true;
-    };
    };
    neovim = {
     enable = true;
@@ -202,8 +186,19 @@
      '';
     };
    };
+   dconf = {
+    enable = true;
+   };
+   mtr = {
+    enable = true;
+   };
+   gnupg = {
+    agent = {
+     enable = true;
+     enableSSHSupport = true;
+    };
+   };
   };
-
   virtualisation = {
    docker = {
     enable = true;
