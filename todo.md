@@ -15,3 +15,5 @@
 - Check last user settings left
 - Learn how to create my own st terminal
 - Learn how to create my won nix package
+- Sync mega does not work if MEGA(home dir) has no contents
+- Learn and know how to use docker in nixos
