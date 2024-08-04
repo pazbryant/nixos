@@ -84,6 +84,7 @@
       bandwhich
       spotdl
       ffmpeg
+      picom
       # libnotify
 
       pcmanfm
@@ -140,6 +141,7 @@
    };
    startupPrograms = [
     "dunst"
+    "picom"
     "udiskie"
     "xset -dpms"
     "xsetroot -cursor_name left_ptr"
@@ -183,6 +185,9 @@
   };
 
   services = {
+   picom = {
+    enable = true;
+   };
    mpd = {
     enable = true;
     musicDirectory = "~/Music";
@@ -205,7 +210,7 @@
       separator_height = "15";
       frame_width = "1";
       frame_color = "#21203e";
-      separator_color = "#eff1f5";
+      separator_color = "#00000000";
       mouse_left_click = "do_action, close_current";
       mouse_right_click = "close_all";
       browser = "#{pkgs.firefox}/bin/firefox";
