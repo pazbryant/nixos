@@ -145,8 +145,8 @@
      enable = true;
     };
     defaultFonts = {
-     serif = ["Overpass" "DejaVu Serif"];
-     sansSerif = ["Overpass" "DevaVu Sans"];
+     serif = ["Overpass SemiBold" "DejaVu Serif"];
+     sansSerif = ["Overpass SemiBold" "DevaVu Sans"];
      monospace = ["Maple Mono NF" "DejaVu Sans Mono"];
      emoji = [
      "Font Awesome 6 Free" 
