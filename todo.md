@@ -13,3 +13,5 @@
 - Check rofi pass integration
 - Add rofi custom theme in home-manager
 - Check last user settings left
+- Learn how to create my own st terminal
+- Learn how to create my won nix package
