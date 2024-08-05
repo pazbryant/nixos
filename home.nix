@@ -523,9 +523,6 @@
 
   programs.zsh = {
    enable = true;
-   syntaxHighlighting = {
-    enable = true;
-   };
    defaultKeymap = "emacs";
    sessionVariables = {
     EDITOR="nvim";
