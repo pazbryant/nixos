@@ -17,3 +17,4 @@
 - Learn how to create my won nix package
 - Sync mega does not work if MEGA(home dir) has no contents
 - Learn and know how to use docker in nixos
+- Mime apps config home manager
