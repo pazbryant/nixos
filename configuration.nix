@@ -134,9 +134,9 @@
   fonts = {
    enableDefaultPackages = true;
    packages = [
-    pkgs.overpass
     pkgs.font-awesome
     pkgs.maple-mono-NF
+    pkgs.overpass
    ];
    fontconfig = {
     enable = true;
@@ -145,9 +145,9 @@
      enable = true;
     };
     defaultFonts = {
-     serif = ["Overpass SemiBold" "DejaVu Serif"];
-     sansSerif = ["Overpass SemiBold" "DevaVu Sans"];
-     monospace = ["Maple Mono NF" "DejaVu Sans Mono"];
+     serif = ["Overpass"];
+     sansSerif = ["Overpass"];
+     monospace = ["Maple Mono NF"];
      emoji = [
      "Font Awesome 6 Free" 
      "Font Awesome 6 Free Solid" 
