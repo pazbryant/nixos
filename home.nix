@@ -78,6 +78,7 @@
       mpv
       bspwm
       sxhkd
+      unclutter
 
       dunst
       bandwhich
@@ -94,6 +95,7 @@
       feh
       udiskie # need udev2 service to be activated
       translate-shell
+      rclone
      
       # extra
       obsidian
@@ -102,8 +104,7 @@
     ])
     
     (with pkgs-unstable;[
-     neovim
-     rclone
+     neovim-unwrapped
     ])
 
     (with st-pkgs;[
@@ -144,11 +145,35 @@
     "picom"
     "udiskie"
     "xset -dpms"
+    "unclutter -idle 1"
     "xsetroot -cursor_name left_ptr"
     "pgrep -x sxhkd > /dev/null || sxhkd -m -1"
     "pgrep -x mpd >/dev/null || mpd"
     "feh --bg-fill /home/bryant/Downloads/1345196.png"
    ];
+   rules = {
+    "mpv" = {
+     desktop = "^5";
+     floating = true;
+     follow = true;
+    };
+    "obsidian" = {
+     desktop = "^6";
+     follow = true;
+    };
+    "qBittorrent" = {
+     desktop = "^7";
+     follow = true;
+    };
+    "feh" = {
+     state = "floating";
+     center = true;
+    };
+    "pavucontrol" = {
+     state = "floating";
+     center = true;
+    };
+   };
   };
 
   qt = {
@@ -179,6 +204,9 @@
   };
 
   xdg = {
+   mime = {
+    enable = true;
+   };
    userDirs = {
     enable = true;
    };
@@ -229,6 +257,7 @@
      };
     };
    };
+
    sxhkd = {
     enable = true;
     keybindings = {
@@ -277,6 +306,21 @@
      "super + shift + space" = "bspc query -N -n .local.window | xargs -I ID bspc node ID -g hidden";
      # move floating window
      "super + {Left,Down,Up,Right}" = "bspc node -v {-30 0,0 30,0 -30,30 0}";
+    };
+   };
+  };
+
+  programs.neovim = {
+   enable = true;
+   package = pkgs-unstable.neovim-unwrapped;
+  };
+
+  programs.lazygit = {
+   enable = true;
+   settings = {
+    os = {
+     open = "st -e nvim {{filename}}";
+     editPreset = "nvim";
     };
    };
   };
@@ -479,6 +523,9 @@
 
   programs.zsh = {
    enable = true;
+   syntaxHighlighting = {
+    enable = true;
+   };
    defaultKeymap = "emacs";
    sessionVariables = {
     EDITOR="nvim";
