@@ -313,6 +313,24 @@
   programs.neovim = {
    enable = true;
    package = pkgs-unstable.neovim-unwrapped;
+   extraConfig = ''
+    set clipboard=unnamedplus
+    set showmode
+    set showtabline=0
+    set noswapfile
+    set undofile
+    set nowrap
+    set expandtab
+    set cmdheight=0
+    set shiftwidth=2
+    set softtabstop=2
+    set tabstop=2
+    set nonumber
+    set hlsearch
+    set incsearch
+    set smartcase
+    set ignorecase
+   '';
   };
 
   programs.lazygit = {
@@ -631,10 +649,6 @@
    extraConfig = ''
     set -g default-shell "\${pkgs.zsh}/bin/zsh"
 
-    # set prefix
-    unbind-key C-b
-    set -g prefix C-Space
-    
     # set mouse mode on
     set -g mouse on
     

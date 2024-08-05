@@ -135,8 +135,10 @@
    enableDefaultPackages = true;
    packages = [
     pkgs.font-awesome
+    pkgs.font-awesome
     pkgs.maple-mono-NF
     pkgs.overpass
+    pkgs.noto-fonts
    ];
    fontconfig = {
     enable = true;
@@ -145,8 +147,18 @@
      enable = true;
     };
     defaultFonts = {
-     serif = ["Overpass"];
-     sansSerif = ["Overpass"];
+     serif = [
+     "Overpass"
+     "Noto Sans"
+     "Noto Sans CJK KR"
+     "Noto Sans CJK JP"
+     "Noto Sans CJK SC"
+     "Noto Sans CJK TC"
+     "Noto Sans Arabic"
+     ];
+     sansSerif = [
+     "Overpass"
+     ];
      monospace = ["Maple Mono NF"];
      emoji = [
      "Font Awesome 6 Free" 
