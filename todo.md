@@ -19,3 +19,5 @@
 - Learn and know how to use docker in nixos
 - Mime apps config home manager
 - Add feh chose image script to bspwm
+- Finish neovim config
+- Finish polybar and tmux config using nixos
