@@ -21,3 +21,5 @@
 - Add feh chose image script to bspwm
 - Finish neovim config
 - Finish polybar and tmux config using nixos
+- Polybar service not working
+
