@@ -115,6 +115,110 @@
    sessionVariables = {};
   };
 
+  services = {
+   dunst = {
+    enable = true;
+    settings = {
+     global = {
+      font = "Maple Mono NF 9";
+      separator_height = "15";
+      frame_width = "1";
+      frame_color = "#21203e";
+      separator_color = "#00000000";
+      mouse_left_click = "do_action, close_current";
+      mouse_right_click = "close_all";
+      browser = "#{pkgs.firefox}/bin/firefox";
+     };
+     urgency_low = {
+      background = "#eff1f5";
+      foreground = "#4c4f69";
+     };
+     urgency_normal = {
+      background = "#dce0e8";
+      foreground = "#4c4f69";
+     };
+     urgency_critical = {
+      background = "#d20f39";
+      foreground = "#ffffff";
+     };
+    };
+   };
+   sxhkd = {
+    enable = true;
+    keybindings = {
+     # main bspwm key binds and sxhkd
+     "super + q" = "bspc node -c";
+     "super + alt + {q,r}" = "bspc {quit,wm -r}";
+     "super + shift + Escape" = "pkill -USR1 -x sxhkd && dunstify 'sxhkd' 'Reloaded successfully'";
+     "super + f" = "bspc node -t '~fullscreen'";
+     "super + {_,shift + }{h,j,k,l}" = "bspc node -{f,s} {west,south,north,east}";
+     "super + {n,p}" = "bspc node -f {next,prev}.local.!hidden.window";
+     "super + shift + {p,n}" = "bspc desktop -f {prev,next}.local";
+     "super + Tab" = "bspc desktop -f last";
+     "super + {bracketleft,braceleft,parenleft,percent,equal,ampersand,parenright}" = "bspc desktop -f '^{1-7}'";
+     "super + shift {1-7}" = "bspc node -d '^{1-7}'";
+     "super + w" = "bspc desktop -l next";
+     "super + shift + w" = "bspc node -t \\~floating";
+     # main personal key bindings
+     "super + a" = "pavucontrol";
+     "super + e" = "pcmanfm";
+     "super + t" = "st";
+     "super + shift + t" = "alacritty";
+     "super + Return" = "firefox -P Personal";
+     "super + shift + Return" = "firefox -P Work";
+     "super + d" = "rofi -show drun -show-icons";
+     "super + shift + d" = "rofi -show window -show-icons";
+     "super + m" = "bspc rule -a St -o state=floating follow=on center=true rectangle=700x400+0+0 && st -e zsh -c 'ncmpcpp'";
+     # scripts
+     "super + x" = "/home/bryant/.dotfiles/bin/select_and_execute.sh";
+     "super + alt + w" = "/home/bryant/.dotfiles/bin/sh/set-wallpaper.sh";
+     "super + b" = "/home/bryant/.dotfiles/bin/sh/set-brightness.sh";
+     "super + space" = "/home/bryant/.dotfiles/bin/sh/select-keyboard.sh";
+     # print
+     "Print" = "maim --select | xclip -selection clipboard -t image/png && dunstify 'Save' 'Clipboard'";
+     "super + Print" = "maim | xclip -selection clipboard -t image/png && dunstify 'Save' 'Clipboard'";
+     "alt + Print" = "./bin/sh/take-streenshots.sh cropped";
+     "shift + Print" = "./bin/sh/take-streenshots.sh full";
+     # volume
+     # resize windows
+     "super + alt + l" = "bspc node -z right 20 0 || bspc node -z left 20 0";
+     "super + alt + h" = "bspc node -z right -20 0 || bspc node -z left -20 0";
+     "super + alt + j" = "bspc node -z bottom 0 20 || bspc node -z top 0 20";
+     "super + alt + k" = "bspc node -z bottom 0 -20 || bspc node -z top 0 -20";
+     # hidden and show
+     "super + v" = "bspc node -g hidden";
+     "super + shift + v" = "bspc node {,$(bspc query -N -n .hidden | tail -n1)} -g hidden=off";
+     "super + shift + space" = "bspc query -N -n .local.window | xargs -I ID bspc node ID -g hidden";
+     # move floating window
+     "super + {Left,Down,Up,Right}" = "bspc node -v {-30 0,0 30,0 -30,30 0}";
+    };
+   };
+   mpd = {
+    enable = true;
+    musicDirectory = "~/Music";
+    network = {
+     startWhenNeeded = true;
+    };
+    extraConfig = ''
+     audio_output {
+      type "pipewire"
+      name "Pipewire Sound Server"
+     }
+    '';
+   };
+   picom = {
+    enable = true;
+   };
+   udiskie = {
+    enable = true;
+    notify = true;
+   };
+   unclutter = {
+    enable = true;
+   };
+
+  };
+
   xsession.windowManager.bspwm = {
    enable = true;
    monitors = {
@@ -209,104 +313,6 @@
    };
    userDirs = {
     enable = true;
-   };
-  };
-
-  services = {
-   picom = {
-    enable = true;
-   };
-   mpd = {
-    enable = true;
-    musicDirectory = "~/Music";
-    network = {
-     startWhenNeeded = true;
-    };
-    extraConfig = ''
-     audio_output {
-      type "pipewire"
-      name "PipeWire Sound Server"
-     }
-    '';
-   };
-
-   dunst = {
-    enable = true;
-    settings = {
-     global = {
-      font = "Maple Mono NF 9";
-      separator_height = "15";
-      frame_width = "1";
-      frame_color = "#21203e";
-      separator_color = "#00000000";
-      mouse_left_click = "do_action, close_current";
-      mouse_right_click = "close_all";
-      browser = "#{pkgs.firefox}/bin/firefox";
-     };
-     urgency_low = {
-      background = "#eff1f5";
-      foreground = "#4c4f69";
-     };
-     urgency_normal = {
-      background = "#dce0e8";
-      foreground = "#4c4f69";
-     };
-     urgency_critical = {
-      background = "#d20f39";
-      foreground = "#ffffff";
-     };
-    };
-   };
-
-   sxhkd = {
-    enable = true;
-    keybindings = {
-     # main bspwm key binds and sxhkd
-     "super + q" = "bspc node -c";
-     "super + alt + {q,r}" = "bspc {quit,wm -r}";
-     "super + shift + Escape" = "pkill -USR1 -x sxhkd && dunstify 'sxhkd' 'Reloaded successfully'";
-     "super + f" = "bspc node -t '~fullscreen'";
-     "super + {_,shift + }{h,j,k,l}" = "bspc node -{f,s} {west,south,north,east}";
-     "super + {n,p}" = "bspc node -f {next,prev}.local.!hidden.window";
-     "super + shift + {p,n}" = "bspc desktop -f {prev,next}.local";
-     "super + Tab" = "bspc desktop -f last";
-     "super + {bracketleft,braceleft,parenleft,percent,equal,ampersand,parenright}" = "bspc desktop -f '^{1-7}'";
-     "super + shift {1-7}" = "bspc node -d '^{1-7}'";
-     "super + w" = "bspc desktop -l next";
-     "super + shift + w" = "bspc node -t \\~floating";
-     # main personal key bindings
-     "super + a" = "pavucontrol";
-     "super + e" = "pcmanfm";
-     "super + t" = "st";
-     "super + shift + t" = "alacritty";
-     "super + Return" = "firefox -P Personal";
-     "super + shift + Return" = "firefox -P Work";
-     "super + d" = "rofi -show drun -show-icons";
-     "super + shift + d" = "rofi -show window -show-icons";
-     "super + m" = "bspc rule -a St -o state=floating follow=on center=true rectangle=700x400+0+0 && st -e zsh -c 'ncmpcpp'";
-     # scripts
-     "super + x" = "/home/bryant/.dotfiles/bin/select_and_execute.sh";
-     "super + alt + w" = "/home/bryant/.dotfiles/bin/sh/set-wallpaper.sh";
-     "super + b" = "/home/bryant/.dotfiles/bin/sh/set-brightness.sh";
-     "super + space" = "/home/bryant/.dotfiles/bin/sh/select-keyboard.sh";
-     # print
-     "Print" = "maim --select | xclip -selection clipboard -t image/png && dunstify 'Save' 'Clipboard'";
-     "super + Print" = "maim | xclip -selection clipboard -t image/png && dunstify 'Save' 'Clipboard'";
-     "alt + Print" = "./bin/sh/take-streenshots.sh cropped";
-     "shift + Print" = "./bin/sh/take-streenshots.sh full";
-     # volume
-     # resize windows
-     "super + alt + l" = "bspc node -z right 20 0 || bspc node -z left 20 0";
-     "super + alt + h" = "bspc node -z right -20 0 || bspc node -z left -20 0";
-     "super + alt + j" = "bspc node -z bottom 0 20 || bspc node -z top 0 20";
-     "super + alt + k" = "bspc node -z bottom 0 -20 || bspc node -z top 0 -20";
-     # hidden and show
-     "super + v" = "bspc node -g hidden";
-     "super + shift + v" = "bspc node {,$(bspc query -N -n .hidden | tail -n1)} -g hidden=off";
-     "super + shift + space" = "bspc query -N -n .local.window | xargs -I ID bspc node ID -g hidden";
-     # move floating window
-     "super + {Left,Down,Up,Right}" = "bspc node -v {-30 0,0 30,0 -30,30 0}";
-    };
    };
   };
 
@@ -577,6 +583,33 @@
    };
    profileExtra = ''
     [[ -z $DISPLAY && $(tty) = /dev/tty1 ]] && startx
+   '';
+   initExtra = ''
+    yy() {
+      tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+      yazi "$@" --cwd-file="$tmp"
+      if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd" || return
+      fi
+      rm -f -- "$tmp"
+    }
+    
+    # Function to reload the Zsh configuration
+    reload() {
+      source /home/bryant/.zshrc
+    }
+    
+    arch() {
+      architecture=""
+      case $(uname -m) in
+      i386) architecture="386" ;;
+      i686) architecture="386" ;;
+      x86_64) architecture="amd64" ;;
+      arm) dpkg --print-architecture | grep -q "arm64" && architecture="arm64" || architecture="arm" ;;
+      esac
+    
+      echo "$architecture"
+    }
    '';
   };
 
