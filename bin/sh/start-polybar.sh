@@ -1,4 +1,6 @@
-#!/usr/bin/sh
+#!/usr/bin/env sh
+
+set -x
 
 stop_polybar() {
     killall -q polybar
@@ -9,7 +11,7 @@ stop_polybar() {
 
 start_polybar() {
     for monitor in $(polybar --list-monitors | cut -d":" -f1); do
-        $monitor polybar --reload mainbar-bspwm &
+        MONITOR=$monitor polybar --reload mainbar-bspwm &
     done
 }
 

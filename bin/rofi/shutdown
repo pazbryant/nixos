@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 shutdown_computer() {
   dunstify "Shuting down" && sleep 1

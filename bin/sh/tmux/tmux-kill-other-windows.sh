@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Get the current session name
 current_session=$(tmux display-message -p "#S")

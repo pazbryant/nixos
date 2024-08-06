@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 brightness=$(rofi -dmenu -p "Enter brightness (0 to 1.0):" -lines 1)
 

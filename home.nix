@@ -116,6 +116,13 @@
   };
 
   services = {
+   polybar = {
+    enable = true;
+    config = /home/bryant/.dotfiles/polybar.ini;
+    script = ''
+      "./bin/sh/start-polybar.sh"
+    '';
+   };
    dunst = {
     enable = true;
     settings = {
@@ -253,7 +260,8 @@
     "xsetroot -cursor_name left_ptr"
     "pgrep -x sxhkd > /dev/null || sxhkd -m -1"
     "pgrep -x mpd >/dev/null || mpd"
-    "feh --bg-fill /home/bryant/Downloads/1345196.png"
+    "~/.fehbg"
+    "~/.dotfiles/bin/sh/start-polybar.sh"
    ];
    rules = {
     "mpv" = {

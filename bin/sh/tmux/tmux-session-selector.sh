@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Get a list of existing tmux sessions
 sessions=$(tmux list-sessions -F "#S" 2>/dev/null)

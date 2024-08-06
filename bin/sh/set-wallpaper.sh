@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 set -x
 
-WALLPAPER_DIR="$HOME/mega/personal/pc/images/wallpapers"
+WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 LAST_WALLPAPER_FILE="$HOME/.fehbg"
 
 list_folders() {
