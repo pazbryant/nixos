@@ -182,7 +182,6 @@
     "super + a" = "pavucontrol";
     "super + e" = "pcmanfm";
     "super + t" = "st";
-    "super + shift + t" = "alacritty";
     "super + Return" = "firefox -P Personal";
     "super + shift + Return" = "firefox -P Work";
     "super + d" = "rofi -show drun -show-icons";

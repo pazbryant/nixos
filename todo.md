@@ -22,4 +22,4 @@
 - Finish neovim config
 - Finish polybar and tmux config using nixos
 - Polybar service not working
-
+- Wait till you have to deploy to a fleet of machines - physical and in the clouds - and have a need to make them fault tolerant and be able to lift and shift applications and co-ordinate configs across your fleet. You will love NixOS even more. Also, check out NixOps

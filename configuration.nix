@@ -68,10 +68,6 @@
   services = {
    displayManager = {
     defaultSession = "none+bspwm";
-    autoLogin = {
-     enable = true;
-     user = "bryant";
-    };
    };
    udisks2 = {
     enable = true; # needed for udiskie
@@ -103,7 +99,7 @@
       enable = true;
      };
      lightdm = {
-      enable = false;
+      enable = true;
      };
     };
     autoRepeatDelay = 200;
