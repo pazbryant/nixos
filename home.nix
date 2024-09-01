@@ -23,6 +23,7 @@
       fastfetch
       xclip
       zsh
+      vlc
 
       # development
       less
