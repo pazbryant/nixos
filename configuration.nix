@@ -9,10 +9,7 @@
   environment = {
    systemPackages = lib.concatLists [
     (with pkgs; [
-      parted
-      ventoy
       neovim
-      killall
     ])
     (with pkgs-unstable; [
     ])
@@ -48,17 +45,17 @@
    timeZone = "Mexico/General";
   };
   i18n = {
-   defaultLocale = "en_US.UTF-8";
+   defaultLocale = "es_MX.UTF-8";
    extraLocaleSettings =  {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_ADDRESS = "es_MX.UTF-8";
+    LC_IDENTIFICATION = "es_MX.UTF-8";
+    LC_MEASUREMENT = "es_MX.UTF-8";
+    LC_MONETARY = "es_MX.UTF-8";
+    LC_NAME = "es_MX.UTF-8";
+    LC_NUMERIC = "es_MX.UTF-8";
+    LC_PAPER = "es_MX.UTF-8";
+    LC_TELEPHONE = "es_MX.UTF-8";
+    LC_TIME = "es_MX.UTF-8";
    };
   };
   console = {
@@ -67,37 +64,23 @@
   };
   services = {
    displayManager = {
-    defaultSession = "none+bspwm";
-   };
-   udisks2 = {
-    enable = true; # needed for udiskie
-   };
-   ratbagd = {
-    enable = true; # needed for piper
+    defaultSession = "cinnamon";
    };
    openssh = {
     enable = true;
    };
-   pipewire = {
-     enable = true;
-     pulse = {
-      enable = true;
-     };
-   };
    xserver = {
     enable = true;
+    desktopManager = {
+	 	 cinnamon = {
+       enable = true;
+      };
+	  };
+
     videoDrivers = [ 
      "modesetting"  # intel
     ];
-    windowManager = {
-     bspwm = {
-      enable = true;
-     };
-    };
     displayManager = {
-     startx = {
-      enable = true;
-     };
      lightdm = {
       enable = true;
      };
@@ -105,19 +88,19 @@
     autoRepeatDelay = 200;
     autoRepeatInterval = 30;
     xkb = {
-     layout = "bryant-dvorak,bryant-dvorak-itl";
+     layout = "es";
 
      extraLayouts = { 
       bryant-dvorak = {
        description = "Bryant DVRK";
        languages = ["eng"];
-       symbolsFile = /home/bryant/.dotfiles/bryant-dvorak;
+       symbolsFile = /home/bryant/.dotfiles/keyboard/bryant-dvorak;
       };
 
       bryant-dvorak-itl = { 
        description = "Bryant DVRK Itl";
        languages = ["eng"];
-       symbolsFile = /home/bryant/.dotfiles/bryant-dvorak-itl;
+       symbolsFile = /home/bryant/.dotfiles/keyboard/bryant-dvorak-itl;
       };
      };
     };
@@ -133,7 +116,6 @@
      extraGroups = [ 
       "wheel"
       "networkmanager" 
-      "docker"
       ];
     }; 
    };
@@ -207,25 +189,10 @@
      '';
     };
    };
-   dconf = {
-    enable = true;
-   };
-   mtr = {
-    enable = true;
-   };
    gnupg = {
     agent = {
      enable = true;
      enableSSHSupport = true;
-    };
-   };
-  };
-  virtualisation = {
-   docker = {
-    enable = true;
-    rootless = {
-    enable = false;
-    setSocketVariable = false;
     };
    };
   };

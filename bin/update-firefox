@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Function to prompt user confirmation
+update_firefox() {
+  bash -c "$(
+   curl -fsSL https://raw.githubusercontent.com/black7375/Firefox-UI-Fix/master/install.sh
+  )"
+}
+
+# Main script logic
+main() {
+  update_firefox
+}
+
+# Run the main function
+main
