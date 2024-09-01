@@ -1,0 +1,18 @@
+Xft.antialias:	1
+Xft.hinting:	1
+Xft.autohint:	0
+Xft.hintstyle:	hintslight
+Xft.rgba:	rgb
+Xft.lcdfilter:	lcddefault
+
+! font family
+st.font: Maple Mono NF:pixelsize=12:style:regular
+
+! window padding
+st.borderpx: 15
+
+! font horizontal spacing
+st.cwscale: 1.05
+
+! transparency
+st.alpha: 1.0
